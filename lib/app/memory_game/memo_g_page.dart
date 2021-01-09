@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:rotacism_app/app/style/theme.dart';
@@ -16,19 +15,6 @@ class MemoGPage extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  Widget _line() {
-    return ListView.builder(
-        itemCount: 41,
-        itemBuilder: (_, index) {
-          final nameImage = '[rtcsm]${index + 1}.jpeg';
-          return Container(
-              child: CircleAvatar(
-            radius: 35,
-            child: Image.asset('assets/rotacism/$nameImage'),
-          ));
-        });
   }
 
   Widget _grid() {
@@ -50,28 +36,25 @@ class MemoGPage extends StatelessWidget {
                 (_, index) {
                   var imageURL = '[rtcsm]${index + 1}.jpeg';
                   return InkWell(
-                    onTap: () {},
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: AppColors.mainColor,
-                        borderRadius: BorderRadius.circular(10),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey[200],
-                            blurRadius: 1,
-                            offset: Offset(0, 0),
-                            spreadRadius: 1,
-                          )
-                        ],
-                      ),
-                      child: ClipRRect(
-                        child: Image.asset(
-                          'assets/rotacism/$imageURL',
-                          fit: BoxFit.fitHeight,
-                        ),
-                      ),
-                    ),
-                  );
+                      onTap: () {},
+                      child: Container(
+                          decoration: BoxDecoration(
+                              color: AppColors.mainColor,
+                              borderRadius: BorderRadius.circular(10),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey[200],
+                                  blurRadius: 1,
+                                  offset: Offset(0, 0),
+                                  spreadRadius: 1,
+                                )
+                              ]),
+                          child: ClipRRect(
+                            child: Image.asset(
+                              'assets/rotacism/$imageURL',
+                              fit: BoxFit.fitHeight,
+                            ),
+                          )));
                 },
                 childCount: 40,
               ),
