@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:rotacism_app/app/routes/app_routes.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key key, this.title}) : super(key: key);
@@ -19,7 +21,7 @@ class _HomePageState extends State<HomePage> {
           Container(
               width: MediaQuery.of(context).size.width * .8,
               child: RaisedButton(
-                  onPressed: () {},
+                  onPressed: () => {Get.toNamed(AppRoutes.memog)},
                   color: Colors.green.withOpacity(.9),
                   child: Text(
                     'Jogo da Memória',
