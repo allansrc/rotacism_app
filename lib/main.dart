@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:rotacism_app/app/routes/app_pages.dart';
 
-import 'home_page.dart';
+import 'app/home/home_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -9,13 +11,15 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
+    return GetMaterialApp(
       theme: ThemeData(
+        primarySwatch: Colors.green,
         primaryColor: Color(0xff4CAF50),
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyHomePage(title: 'RotcISM app'),
+      debugShowCheckedModeBanner: false,
+      getPages: AppPages.pages,
+      home: HomePage(title: ''),
     );
   }
 }
