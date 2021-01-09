@@ -31,7 +31,7 @@ class _HomePageState extends State<HomePage> {
                   onPressed: () {},
                   color: Colors.green.withOpacity(.9),
                   child: Text(
-                    'Caça palavras',
+                    'Palavras Cruzadas',
                     style: TextStyle(color: Colors.white),
                   ))),
         ])));
