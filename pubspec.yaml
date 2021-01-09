@@ -10,6 +10,7 @@ environment:
 
 dependencies:
   get:
+  cached_network_image:
 
   flutter:
     sdk: flutter
