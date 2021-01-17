@@ -20,7 +20,7 @@ class MemoGPage extends StatelessWidget {
   Widget _grid() {
     return Container(
       width: Get.width,
-      height: Get.height,
+      height: Get.height * .9,
       padding: EdgeInsets.all(16),
       child: Center(
         child: CustomScrollView(
@@ -56,7 +56,7 @@ class MemoGPage extends StatelessWidget {
                             ),
                           )));
                 },
-                childCount: 40,
+                childCount: 65,
               ),
             ),
           ],

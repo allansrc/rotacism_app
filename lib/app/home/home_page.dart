@@ -33,6 +33,15 @@ class _HomePageState extends State<HomePage> {
                   onPressed: () {},
                   color: Colors.green.withOpacity(.9),
                   child: Text(
+                    'Complete a Palavra',
+                    style: TextStyle(color: Colors.white),
+                  ))),
+          Container(
+              width: MediaQuery.of(context).size.width * .8,
+              child: RaisedButton(
+                  onPressed: () {},
+                  color: Colors.green.withOpacity(.9),
+                  child: Text(
                     'Palavras Cruzadas',
                     style: TextStyle(color: Colors.white),
                   ))),
