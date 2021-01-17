@@ -26,6 +26,8 @@ flutter:
 
   assets:
     - assets/rotacism/
+    - assets/memo_g/
+    - assets/word_complete/
   #   - images/a_dot_ham.jpeg
 
   # fonts:

@@ -6,14 +6,62 @@ class WordCompletePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Memo Module')),
+      appBar: AppBar(title: Text('Word Comp Module')),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            _grid(),
+            _listTile(),
           ],
         ),
       ),
+    );
+  }
+
+  Widget _listTile() {
+    List<String> listWordsToComplete = [
+      'afluente.jpeg',
+      'atlas.jpeg',
+      'bicicleta.jpeg',
+      'bíblia.jpeg',
+      'chicletes.jpeg',
+      'ciclistas.jpeg',
+      'ciclo.jpeg',
+      'clara.jpeg',
+      'clava.jpeg',
+      'conflito.jpeg',
+      'crédito.png',
+      'diploma.jpeg',
+      'disciplina.jpeg',
+      'explosão.jpeg',
+      'flauta.jpeg',
+      'flores.jpeg',
+      'floresta.jpeg',
+      'frentista.jpg',
+      'frutas.jpeg',
+      'globo.jpeg',
+      'glória.jpeg',
+      'groselha.png',
+      'inglês.jpeg',
+      'nublado.jpeg',
+      'placa.jpeg',
+      'planeta.jpeg',
+      'planta.jpeg',
+      'plantação.jpeg',
+      'praia.jpg',
+      'professor.png',
+      'público.jpeg',
+      'reflexo.jpeg',
+      'súplica.jpeg',
+      'teclado.jpeg',
+    ];
+    return Container(
+      width: Get.width,
+      height: Get.height * .9,
+      child: ListView.builder(
+          itemCount: listWordsToComplete.length,
+          itemBuilder: (context, index) {
+            return ListTile(leading: Image.asset('assets/word_complete/${listWordsToComplete[index]}'));
+          }),
     );
   }
 
