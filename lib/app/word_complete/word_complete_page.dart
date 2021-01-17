@@ -1,16 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:rotacism_app/style/theme.dart';
+import 'package:rotacism_app/app/word_complete/word_complete_controller.dart';
 
 class WordCompletePage extends StatelessWidget {
+  final controller = Get.put(WordCompleteController());
+
+  List<TextEditingController> listTextCTRL = List.generate(4, (i) => TextEditingController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Word Comp Module')),
-      body: SingleChildScrollView(
-        child: Column(
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      body: SingleChildScrollView(child: Column(children: [_listTile(), SizedBox(height: 16)])),
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            _listTile(),
+            FloatingActionButton.extended(
+              onPressed: () {},
+              label: Obx(() => Text('${controller.points.value}')),
+              heroTag: 'points',
+            ),
+            FloatingActionButton.extended(
+              onPressed: () => {controller.verifyPoints()},
+              label: Text('Verificar'),
+              heroTag: 'varifyPoints',
+            ),
           ],
         ),
       ),
@@ -18,98 +34,38 @@ class WordCompletePage extends StatelessWidget {
   }
 
   Widget _listTile() {
-    List<String> listWordsToComplete = [
-      'afluente.jpeg',
-      'atlas.jpeg',
-      'bicicleta.jpeg',
-      'bíblia.jpeg',
-      'chicletes.jpeg',
-      'ciclistas.jpeg',
-      'ciclo.jpeg',
-      'clara.jpeg',
-      'clava.jpeg',
-      'conflito.jpeg',
-      'crédito.png',
-      'diploma.jpeg',
-      'disciplina.jpeg',
-      'explosão.jpeg',
-      'flauta.jpeg',
-      'flores.jpeg',
-      'floresta.jpeg',
-      'frentista.jpg',
-      'frutas.jpeg',
-      'globo.jpeg',
-      'glória.jpeg',
-      'groselha.png',
-      'inglês.jpeg',
-      'nublado.jpeg',
-      'placa.jpeg',
-      'planeta.jpeg',
-      'planta.jpeg',
-      'plantação.jpeg',
-      'praia.jpg',
-      'professor.png',
-      'público.jpeg',
-      'reflexo.jpeg',
-      'súplica.jpeg',
-      'teclado.jpeg',
-    ];
+    final listWordsToComplete = controller.listWordsToCompleteLVL1;
     return Container(
-      width: Get.width,
-      height: Get.height * .9,
-      child: ListView.builder(
-          itemCount: listWordsToComplete.length,
-          itemBuilder: (context, index) {
-            return ListTile(leading: Image.asset('assets/word_complete/${listWordsToComplete[index]}'));
-          }),
-    );
-  }
-
-  Widget _grid() {
-    return Container(
-      width: Get.width,
-      height: Get.height * .9,
-      padding: EdgeInsets.all(16),
-      child: Center(
-        child: CustomScrollView(
-          slivers: [
-            SliverGrid(
-              gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                maxCrossAxisExtent: 78,
-                childAspectRatio: .98,
-                crossAxisSpacing: 3,
-                mainAxisSpacing: 2,
-              ),
-              delegate: SliverChildBuilderDelegate(
-                (_, index) {
-                  var imageURL = '[rtcsm]${index + 1}.jpeg';
-                  return InkWell(
-                      onTap: () {},
-                      child: Container(
-                          decoration: BoxDecoration(
-                              color: AppColors.mainColor,
-                              borderRadius: BorderRadius.circular(10),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.grey[200],
-                                  blurRadius: 1,
-                                  offset: Offset(0, 0),
-                                  spreadRadius: 1,
-                                )
-                              ]),
-                          child: ClipRRect(
-                            child: Image.asset(
-                              'assets/rotacism/$imageURL',
-                              fit: BoxFit.fitHeight,
-                            ),
-                          )));
-                },
-                childCount: 65,
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
+        child: ListView.builder(
+            shrinkWrap: true,
+            physics: NeverScrollableScrollPhysics(),
+            itemCount: controller.listWordsToCompleteLVL1['images'].length,
+            itemBuilder: (context, index) {
+              final controllerName = 'textController${index + 1}';
+              return Padding(
+                padding: EdgeInsets.all(8),
+                child: ListTile(
+                    leading: CircleAvatar(
+                        backgroundColor: Colors.transparent,
+                        maxRadius: 48,
+                        child: Image.asset(
+                          'assets/word_complete/${listWordsToComplete["images"][index]}',
+                          fit: BoxFit.fitHeight,
+                        )),
+                    title: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          '${listWordsToComplete["fields"][index]}',
+                          style: TextStyle(fontSize: 20, color: Colors.grey[700]),
+                        ),
+                        TextField(
+                          controller: listTextCTRL[index],
+                        ),
+                      ],
+                    )),
+              );
+            }));
   }
 }
