@@ -30,7 +30,7 @@ class _HomePageState extends State<HomePage> {
           Container(
               width: MediaQuery.of(context).size.width * .8,
               child: RaisedButton(
-                  onPressed: () {},
+                  onPressed: () => {Get.toNamed(AppRoutes.wordcomp)},
                   color: Colors.green.withOpacity(.9),
                   child: Text(
                     'Complete a Palavra',
