@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:rotacism_app/app/routes/app_pages.dart';
 
 import 'app/home/home_page.dart';
+import 'routes/app_pages.dart';
 
 void main() {
   runApp(MyApp());

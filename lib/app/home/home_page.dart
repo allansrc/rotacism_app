@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:rotacism_app/app/routes/app_routes.dart';
+import 'package:rotacism_app/routes/app_routes.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key key, this.title}) : super(key: key);
@@ -15,7 +15,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text(widget.title)),
+        appBar: AppBar(centerTitle: true, title: Text('Rotacismapp')),
         body: Center(
             child: Column(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
           Container(
